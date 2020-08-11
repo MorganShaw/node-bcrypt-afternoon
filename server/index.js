@@ -1,7 +1,8 @@
 require('dotenv').config()
 const express = require('express');
-const massive = require('massive');
 const session = require('express-session');
+const massive = require('massive');
+const authCtrl = require('./controllers/authController');
 
 const PORT = 4002;
 
@@ -29,6 +30,10 @@ app.use(
         secret: SESSION_SECRET
     })
 )
+
+app.post('/auth/register', authCtrl.register);
+
+//What do we use for login? I think I saw it as post, which doesn't make sense to me if it's already been created.
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
