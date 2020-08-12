@@ -3,8 +3,8 @@ import axios from 'axios';
 import './Header.css';
 
 export default class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password: '',
@@ -30,6 +30,18 @@ export default class Header extends Component {
 
   login() {
     // axios POST to /auth/login here
+    const {username, password} = this.state;
+    axios.post('/auth/login', {username, password})
+    .then(user => {
+      this.props.updateUser(user.data);
+      this.setState({
+        username: '',
+        password: ''
+      })
+    }).catch(err => {
+      //what is this???
+      alert(err.response.request.response)
+    })
   }
 
   register() {
