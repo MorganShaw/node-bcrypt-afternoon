@@ -39,6 +39,7 @@ app.post('/auth/login', authCtrl.login);
 app.get('/auth/logout', authCtrl.logout);
 app.get('/api/treasure/dragon', treasureCtrl.dragonTreasure);
 app.get('/api/treasure/user', auth.usersOnly, treasureCtrl.getUserTreasure);
+app.post('/api/treasure/user', auth.usersOnly, treasureCtrl.addUserTreasure);
 
 //What do we use for login? I think I saw it as post, which doesn't make sense to me if it's already been created.
 
