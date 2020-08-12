@@ -3,7 +3,9 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const authCtrl = require('./controllers/authController');
-const authController = require('./controllers/authController');
+// const authController = require('./controllers/authController');
+const treasureCtrl = require('./controllers/treasureController');
+
 
 const PORT = 4002;
 
@@ -35,6 +37,7 @@ app.use(
 app.post('/auth/register', authCtrl.register);
 app.post('/auth/login', authCtrl.login);
 app.get('/auth/logout', authCtrl.logout);
+app.get('/api/treasure/dragon', treasureCtrl.dragonTreasure);
 
 //What do we use for login? I think I saw it as post, which doesn't make sense to me if it's already been created.
 
